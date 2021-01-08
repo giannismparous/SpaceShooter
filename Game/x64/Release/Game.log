@@ -1,0 +1,9 @@
+﻿  bullet.cpp
+C:\Users\Giannis\Desktop\Game\Game\bullet.cpp(6,71): warning C4244: '-=': conversion from 'long double' to 'float', possible loss of data
+C:\Users\Giannis\Desktop\Game\Game\bullet.cpp(7,77): warning C4244: '-=': conversion from 'long double' to 'float', possible loss of data
+  Generating code
+  1 of 373 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Game.vcxproj -> C:\Users\Giannis\Desktop\Game\bin\Game.exe

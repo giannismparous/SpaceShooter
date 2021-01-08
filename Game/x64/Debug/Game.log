@@ -1,0 +1,10 @@
+﻿  enemy.cpp
+C:\Users\jmili\source\repos\Game\Game\Game.h(10,8): error C2143: syntax error: missing ';' before '*'
+C:\Users\jmili\source\repos\Game\Game\Game.h(10,8): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\jmili\source\repos\Game\Game\Game.h(10,29): error C2238: unexpected token(s) preceding ';'
+C:\Users\jmili\source\repos\Game\Game\enemy.cpp(24,12): warning C4551: function call missing argument list
+  Game.cpp
+  GameObject.cpp
+  main.cpp
+  Player.cpp
+  Generating Code...
