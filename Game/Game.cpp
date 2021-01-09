@@ -102,59 +102,48 @@ void Game::update()
 
 	i = 0;
 
-	
-	while (i < enemies.size()) {
-		if (sqrt(pow(player->getPosX() - enemies[i]->getPosX(), 2) + pow(player->getPosY() - enemies[i]->getPosY(), 2)) - player->getRadius() - enemies[i]->getRadius() < 0) {
-			player->hit();
-			if (enemies[i]->isActive()) {
-				enemies[i]->setInactive();
-				delete enemies[i];
-				enemies.erase(enemies.begin() + i);
+	if (player && getAliveState()) {
+		while (i < enemies.size()) {
+			if (sqrt(pow(player->getPosX() - enemies[i]->getPosX(), 2) + pow(player->getPosY() - enemies[i]->getPosY(), 2)) - player->getRadius() - enemies[i]->getRadius() < 0) {
+				player->hit();
+				if (enemies[i]->isActive()) {
+					enemies[i]->setInactive();
+					delete enemies[i];
+					enemies.erase(enemies.begin() + i);
+				}
 			}
-			if (player && getAliveState() && player->getLives()<=0) {
-				kill();
-				delete player;
-				break;
-			}
+			i++;
 		}
-		i++;
+		i = 0;
 	}
 
-	i = 0;
-
-	while (i < enemies2.size()) {
-		if (sqrt(pow(player->getPosX() - enemies2[i]->getPosX(), 2) + pow(player->getPosY() - enemies2[i]->getPosY(), 2)) - player->getRadius() - enemies2[i]->getRadius() < 0) {
-			player->hit();
-			if (enemies2[i]->isActive()) {
-				enemies2[i]->setInactive();
-				delete enemies2[i];
-				enemies2.erase(enemies2.begin() + i);
+	if (player && getAliveState()) {
+		while (i < enemies2.size()) {
+			if (sqrt(pow(player->getPosX() - enemies2[i]->getPosX(), 2) + pow(player->getPosY() - enemies2[i]->getPosY(), 2)) - player->getRadius() - enemies2[i]->getRadius() < 0) {
+				player->hit();
+				if (enemies2[i]->isActive()) {
+					enemies2[i]->setInactive();
+					delete enemies2[i];
+					enemies2.erase(enemies2.begin() + i);
+				}
 			}
-			if (player && getAliveState() && player->getLives()<=0) {
-				kill();
-				delete player;
-				break;
-			}
+			i++;
 		}
-		i++;
+		i = 0;
 	}
 
-	i = 0;
-	
-	while(i < enemyBullets.size()) {
-		if (sqrt(pow(player->getPosX() - enemyBullets[i]->getPosX(), 2) + pow(player->getPosY() - enemyBullets[i]->getPosY(), 2)) - player->getRadius() - enemyBullets[i]->getRadius() < 0) {
-			player->hit();
-			if (enemyBullets[i]->isActive()) {
-				delete enemyBullets[j];
-				enemyBullets.erase(enemyBullets.begin() + j);
+	if (player && getAliveState()) {
+		while (i < enemyBullets.size()) {
+			if (sqrt(pow(player->getPosX() - enemyBullets[i]->getPosX(), 2) + pow(player->getPosY() - enemyBullets[i]->getPosY(), 2)) - player->getRadius() - enemyBullets[i]->getRadius() < 0) {
+				player->hit();
+				if (enemyBullets[i]->isActive()) {
+					delete enemyBullets[j];
+					enemyBullets.erase(enemyBullets.begin() + j);
+				}
 			}
-			if (player && getAliveState() && player->getLives()<=0) {
-				kill();
-				delete player;
-				break;
-			}
+			i++;
 		}
-		i++;
+		i = 0;
 	}
 
 	while (i < bullets.size()) {
@@ -196,6 +185,11 @@ void Game::update()
 	}
 
 	i = 0;
+
+	if (player && getAliveState() && player->getLives() <= 0) {
+		kill();
+		delete player;
+	}
 	//std::cout <<"Bullets size:" << bullets.size()<<std::endl;
 	//std::cout << "Enemy bullets size:" << enemyBullets.size() << std::endl;
 
