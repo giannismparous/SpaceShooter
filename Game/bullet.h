@@ -10,9 +10,10 @@ class bullet : public GameObject
 	float pos_x, pos_y;
 	float speed = 8.f;
 	float anglee;
-	float size=20;
-	float radius = size - 9;
+	float size=30;
+	float radius = size - 17;
 	float length;
+	bool mode;
 public:
 	void update() override;
 	void draw() override;
@@ -29,7 +30,8 @@ public:
 	float getPosX() { return pos_x; }
 	float getPosY() { return pos_y; }
 	bool isActive() {
-		if (pos_x<0 || pos_x>1200 || pos_y <0 || pos_y>1200)return false;
+		if (pos_x<0 || pos_x>CANVAS_WIDTH || pos_y <0 || pos_y>CANVAS_HEIGHT)return false;
 		return true;
 	}
+	void set_mode(bool m) { mode = m; }
 };

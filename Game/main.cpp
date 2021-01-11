@@ -19,7 +19,6 @@ int main()
     Game mygame;
 
     graphics::createWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Space Shooter");
-
     graphics::setUserData(&mygame);
 
     graphics::setDrawFunction(draw);

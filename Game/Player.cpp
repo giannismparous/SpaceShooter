@@ -6,6 +6,7 @@
 
 Player::Player()
 {
+	lives = 3;
 }
 
 void Player::update()
@@ -32,20 +33,19 @@ void Player::update()
 	if (pos_y < 0) pos_y = 0;
 	if (pos_y > CANVAS_HEIGHT)  pos_y = CANVAS_HEIGHT;
 
-	graphics::MouseState mouse;
 	graphics::getMouseState(mouse);
-	anglee = -(atan2((mouse.cur_pos_y - pos_y) , (mouse.cur_pos_x - pos_x))*180/PI)-90.f;
+	anglee = -(atan2((graphics::windowToCanvasY(mouse.cur_pos_y) - pos_y) , (graphics::windowToCanvasX(mouse.cur_pos_x) - pos_x))*180/PI)-90.f;
 	anglee = fmodf(anglee, 360);
 }
 
 void Player::draw()
 {
 	graphics::Brush br;
-
+	if (lives > 3)lives = 3;
 	for (int j = 0; j < lives; j++) {
 		br.texture = std::string(ASSET_PATH) + "heart.png";
 		br.outline_opacity = 0.0f;
-		std::cout << j << std::endl;
+		//std::cout << lives << std::endl;
 		graphics::drawRect((j+1)*40, CANVAS_HEIGHT-50, heartSize+heartSize/2, heartSize, br);
 	}
 
