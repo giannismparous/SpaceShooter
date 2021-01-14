@@ -8,15 +8,15 @@
 class enemy : public GameObject
 {
     float pos_x, pos_y;
-    float speed = 2.f;
-    float size = 50.f;
-    float radius = size / 3;
     float rotation;
     float lastTimeFired;
     bool active = true;
-    graphics::Brush brush;
     int moveX;
     int moveY;
+protected:
+    float speed = 2.f;
+    float size = 50.f;
+    float radius = size / 3.5;
 public:
     void update() override;
     void draw() override;
@@ -45,6 +45,7 @@ public:
     float getPosY() { return pos_y; }
     float getRotation() { return rotation; }
     float getLastTimeFired() { return lastTimeFired; }
+    virtual bool getTransformState() { return false; }
     enemy();
     ~enemy();
 };

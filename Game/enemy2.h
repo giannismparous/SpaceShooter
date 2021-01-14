@@ -8,15 +8,15 @@
 class enemy2 : public GameObject
 {
     float pos_x, pos_y;
-    float speed = 3.f;
-    float size = 50.f;
-    float radius = size / 3;
     float rotation;
     bool active = true;
-    graphics::Brush brush;
+    float speed = 5.f;
+protected:
+    float size = 50.f;
+    float radius = size / 2;
 public:
-    void update() override;
-    void draw() override;
+    virtual void update() override;
+    virtual void draw() override;
     void init() override;
     bool isActive() { return active; }
     void setInactive() { active = false; }
@@ -36,10 +36,14 @@ public:
         }
         //std::cout << abs(getPlayerX() - pos_x) << " " << abs(getPlayerY() - pos_y) << std::endl;
     }
-    float getRadius() { return radius; }
+    void setPosX(float pos_x) { this->pos_x = pos_x; }
+    void setPosY(float pos_y) { this->pos_y = pos_y; }
     float getPosX() { return pos_x; }
     float getPosY() { return pos_y; }
+    float getRadius() { return radius; }
     float getRotation() { return rotation; }
-    enemy2();
+    virtual bool getMultiplied() { return false; }
+    virtual bool getTransformState() { return false; }
+    enemy2() ;
     ~enemy2();
 };

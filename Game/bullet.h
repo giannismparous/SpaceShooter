@@ -11,7 +11,7 @@ class bullet : public GameObject
 	float speed = 8.f;
 	float anglee;
 	float size=30;
-	float radius = size - 17;
+	float radius = size - 25;
 	float length;
 	bool mode;
 public:

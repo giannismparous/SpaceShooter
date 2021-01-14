@@ -27,7 +27,6 @@ void Player::update()
 	{
 		pos_y -= speed * graphics::getDeltaTime() / 10.0f;
 	}
-
 	if (pos_x < 0) pos_x = 0;
 	if (pos_x > CANVAS_WIDTH)  pos_x = CANVAS_WIDTH;
 	if (pos_y < 0) pos_y = 0;
@@ -46,7 +45,7 @@ void Player::draw()
 		br.texture = std::string(ASSET_PATH) + "heart.png";
 		br.outline_opacity = 0.0f;
 		//std::cout << lives << std::endl;
-		graphics::drawRect((j+1)*40, CANVAS_HEIGHT-50, heartSize+heartSize/2, heartSize, br);
+		graphics::drawRect((j+1)*CANVAS_WIDTH/40, CANVAS_HEIGHT-50, heartSize+heartSize/2, heartSize, br);
 	}
 
 	br.texture = std::string(ASSET_PATH) + "spaceship.png";

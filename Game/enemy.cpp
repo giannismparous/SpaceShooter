@@ -7,8 +7,9 @@ void enemy::update()
 {	
 	if (moveX==pos_x && moveY==pos_y){
 			srand(graphics::getGlobalTime());
-			moveX = (rand() % 120)*10;
-			moveY = (rand() % 60)*10;
+			moveX = (rand() % CANVAS_WIDTH/10)*10;
+			moveY = (rand() % CANVAS_HEIGHT/10)*10;
+			//std::cout << moveX << " " << moveY << std::endl;
 	}
 	if (abs(pos_x - moveX) > 2) {
 		if (moveX < pos_x)pos_x -= round(speed * graphics::getDeltaTime() / 10.0f);
@@ -31,7 +32,6 @@ void enemy::update()
 void enemy::draw()
 {
 	graphics::Brush br;
-
 	br.texture = std::string(ASSET_PATH) + "enemy.png";
 	br.outline_opacity = 0.0f;
 
@@ -39,15 +39,14 @@ void enemy::draw()
 	graphics::drawRect(pos_x, pos_y, size+size/3, size, br);
 	br.texture = "";
 	br.fill_opacity = 0.0f;
-	graphics::drawDisk(pos_x, pos_y, size/3, br);
+	graphics::drawDisk(pos_x, pos_y, radius, br);
 	graphics::resetPose();
 }
 
 void enemy::init()
 {
-	srand(graphics::getGlobalTime());
-	moveX = rand() % 1200;
-	moveY = rand() % 600;
+	moveX = (rand() % CANVAS_WIDTH / 10) * 10 ;
+	moveY = (rand() % CANVAS_HEIGHT / 10) * 10;
 }
 
 

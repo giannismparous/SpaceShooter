@@ -18,14 +18,19 @@ void Game::GameUpdate()
 		player = new Player();
 		player_initialized = true;
 		lastTime = graphics::getGlobalTime() - 3500;
-		lastTimeFired = graphics::getGlobalTime();
 		lastTimeEnemy = graphics::getGlobalTime();
 		lastTimeEnemy2 = graphics::getGlobalTime();
-		std::cout << lastTime << " " << graphics::getGlobalTime() << std::endl;
+		lastTimeEnemy3 = graphics::getGlobalTime();
+		lastTimeEnemy4 = graphics::getGlobalTime();
+		//std::cout << lastTime << " " << graphics::getGlobalTime() << std::endl;
 		cooldown = 2000;
 		cooldown2 = 3000;
+		cooldown3 = 7000;
+		cooldown4 = 8000;
 		enemyCounter = 0;
 		enemyCounter2 = 0;
+		enemyCounter3 = 0;
+		enemyCounter4 = 0;
 		score = 0;
 		i = 0;
 		j = 0;
@@ -108,36 +113,18 @@ void Game::GameUpdate()
 	GameObject::setPlayerX(player && getAliveState() ? player->getPosX() : deathX);
 	GameObject::setPlayerY(player && getAliveState() ? player->getPosY() : deathY);
 
-	if (graphics::getGlobalTime() - lastTimeEnemy > cooldown) {
-		enemies.push_back(new enemy());
-		//std::cout <<"Enemies size:" << enemies.size()<<std::endl;
-		enemies.back()->setXY();
-		lastTimeEnemy = graphics::getGlobalTime();
-		enemies.back()->setLastTimeFired(graphics::getGlobalTime() - 1000);
-		enemyCounter++;
-		if (enemyCounter / 10 != 0 && cooldown > 500) {
-			enemyCounter = 0;
-			cooldown -= 100;
-		}
-	}
-
-	if (graphics::getGlobalTime() - lastTimeEnemy2 > cooldown2) {
-		enemies2.push_back(new enemy2());
-		enemies2.back()->setXY();
-		lastTimeEnemy2 = graphics::getGlobalTime();
-		enemyCounter2++;
-		if (enemyCounter2 / 10 != 0 && cooldown2 > 500) {
-			enemyCounter2 = 0;
-			cooldown2 -= 100;
-		}
-	}
+	spawnEnemies();
 
 	while (i < enemies.size()) {
 		enemies[i]->update();
 		srand(graphics::getGlobalTime() + rand());
-		if (graphics::getGlobalTime() - enemies[i]->getLastTimeFired() > 2000 + rand() % 100000 && getAliveState() && graphics::getGlobalTime() > 3000) {
-			enemyFire(i);
+		if (graphics::getGlobalTime() - enemies[i]->getLastTimeFired() > 3000 + rand() % 100000 && getAliveState() && graphics::getGlobalTime() > 3000 && enemies[i]->getTransformState()) {
+			enemy2Fire(i);
 			enemies[i]->setLastTimeFired(graphics::getGlobalTime());
+		}
+		else if (graphics::getGlobalTime() - enemies[i]->getLastTimeFired() > 2000 + rand() % 100000 && getAliveState() && graphics::getGlobalTime() > 3000 && !enemies[i]->getTransformState()) {
+			enemyFire(i);
+			enemies[i]->setLastTimeFired(graphics::getGlobalTime());		
 		}
 		i++;
 	}
@@ -145,7 +132,11 @@ void Game::GameUpdate()
 	i = 0;
 
 	while (i < enemies2.size()) {
-		enemies2[i]->update();
+		if (enemies2[i]->isActive())enemies2[i]->update();
+		else {
+			delete enemies2[i];
+			enemies2.erase(enemies2.begin() + i);
+		}
 		i++;
 	}
 
@@ -165,7 +156,9 @@ void Game::GameUpdate()
 		bullets.clear();
 		enemyBullets.clear();
 		aliveState = true;
+		replayTime = graphics::getGlobalTime();
 	}
+
 	//std::cout <<"Bullets size:" << bullets.size()<<std::endl;
 	//std::cout << "Enemy bullets size:" << enemyBullets.size() << std::endl;
 
@@ -177,7 +170,7 @@ void Game::StartMenuDraw()
 		MenuFlash = !MenuFlash;
 		starttimer = graphics::getGlobalTime();
 	}
-	if (MenuFlash) graphics::drawText(CANVAS_WIDTH / 5.15, CANVAS_HEIGHT / 2, 100, "Press SPACE to Start", br);
+	if (MenuFlash) graphics::drawText(CANVAS_WIDTH / 5.5, CANVAS_HEIGHT / 2, CANVAS_WIDTH/16, "Press SPACE to Start", br);
 }
 
 void Game::GameUpdateDraw()
@@ -214,23 +207,106 @@ void Game::GameUpdateDraw()
 	i = 0;
 
 	sprintf_s(playerScore, "Score:%d", score);
-	graphics::drawText(20, 50, 50, playerScore, br);
+	graphics::drawText(20, 50, CANVAS_WIDTH/32, playerScore, br);
 	//sprintf_s(playerCoords, "(%6.2f,%6.2f)", mouse.cur_pos_x, mouse.cur_pos_y);
 	//graphics::drawText(30, 80, 50, playerCoords, br);
 	//std::cout << mouse.cur_pos_x << " " << mouse.cur_pos_y << std::endl;
 
 	if (debugMode && player) {
 		//std::cout << enemies.back()->getPosX()<<" "<< enemies.back()->getPosY() << std::endl;
-		//sprintf_s(playerCoords, "(%6.2f,%6.2f)", mouse.cur_pos_x, mouse.cur_pos_y);
-		//graphics::drawText(30, 50, 50, playerCoords, br);
+		sprintf_s(playerCoords, "(%6.2f,%6.2f)", player->getPosX(), player->getPosY());
+		graphics::drawText(30, 100, 50, playerCoords, br);
 		//sprintf_s(enemiesAlive,"%d", enemies.size());
 		//graphics::drawText(60, 70, 50, enemiesAlive, br);
 	}
-	if (!getAliveState())graphics::drawText(CANVAS_WIDTH / 3, CANVAS_HEIGHT / 2, 70, "Press R to Restart", br);
-	std::cout << CountBullets << std::endl;
+	if (!getAliveState() & player_initialized)graphics::drawText(CANVAS_WIDTH / 3, CANVAS_HEIGHT / 2, CANVAS_WIDTH/22.85, "Press R to Restart", br);
+
+	if (graphics::getGlobalTime() > 250 && graphics::getGlobalTime() - replayTime <= 250) { graphics::drawText(CANVAS_WIDTH / 3- 16*(graphics::getGlobalTime() - replayTime), CANVAS_HEIGHT / 2+ (graphics::getGlobalTime() - replayTime)*1.25, CANVAS_WIDTH/22.8+4*(graphics::getGlobalTime()-replayTime), "Press R to Restart", br); }
 }
 
-void Game::CheckCollision(){
+void Game::update()
+{
+	if (!stateGame)
+	{
+		StartMenu();
+	}
+	else
+	{
+		GameUpdate();
+	}
+}
+
+void Game::draw()
+{
+	br.texture = std::string(ASSET_PATH) + "background.png";
+	br.outline_opacity = 0.0f;
+
+	//draw background
+	graphics::drawRect(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2, CANVAS_WIDTH, CANVAS_HEIGHT, br);
+
+	if (!stateGame)
+	{
+		StartMenuDraw();
+	}
+	else
+	{
+		GameUpdateDraw();
+	}
+}
+
+void Game::spawnEnemies() {
+
+	if (graphics::getGlobalTime() - lastTimeEnemy > cooldown) {
+		enemies.push_back(new enemy());
+		//std::cout <<"Enemies size:" << enemies.size()<<std::endl;
+		enemies.back()->setXY();
+		lastTimeEnemy = graphics::getGlobalTime();
+		enemies.back()->setLastTimeFired(graphics::getGlobalTime() - 1000);
+		enemyCounter++;
+		if (enemyCounter / 10 != 0 && cooldown > 500) {
+			enemyCounter = 0;
+			cooldown -= 100;
+		}
+	}
+
+	if (graphics::getGlobalTime() - lastTimeEnemy2 > cooldown2) {
+		enemies2.push_back(new enemy2());
+		enemies2.back()->setXY();
+		lastTimeEnemy2 = graphics::getGlobalTime();
+		enemyCounter2++;
+		if (enemyCounter2 / 10 != 0 && cooldown2 > 500) {
+			enemyCounter2 = 0;
+			cooldown2 -= 100;
+		}
+	}
+
+	if (graphics::getGlobalTime() - lastTimeEnemy3 > cooldown3 && score>1000) {
+		enemies.push_back(new enemy3());
+		//std::cout <<"Enemies size:" << enemies.size()<<std::endl;
+		enemies.back()->setXY();
+		lastTimeEnemy3 = graphics::getGlobalTime();
+		enemies.back()->setLastTimeFired(graphics::getGlobalTime() - 1000);
+		enemyCounter++;
+		if (enemyCounter3 / 10 != 0 && cooldown3 > 2000) {
+			enemyCounter3 = 0;
+			cooldown3 -= 100;
+		}
+	}
+
+	if (graphics::getGlobalTime() - lastTimeEnemy4 > cooldown4 && score>1200) {
+		enemies2.push_back(new enemy4(false));
+		enemies2.back()->setXY();
+		lastTimeEnemy4 = graphics::getGlobalTime();
+		enemyCounter4++;
+		if (enemyCounter4 / 10 != 0 && cooldown4 > 2000) {
+			enemyCounter4 = 0;
+			cooldown4 -= 100;
+		}
+	}
+
+}
+
+void Game::CheckCollision() {
 	if (player && getAliveState()) {
 		while (i < enemies.size()) {
 			if (sqrt(pow(player->getPosX() - enemies[i]->getPosX(), 2) + pow(player->getPosY() - enemies[i]->getPosY(), 2)) - player->getRadius() - enemies[i]->getRadius() < 0) {
@@ -255,6 +331,7 @@ void Game::CheckCollision(){
 					delete enemies2[i];
 					enemies2.erase(enemies2.begin() + i);
 				}
+				
 			}
 			i++;
 		}
@@ -266,8 +343,8 @@ void Game::CheckCollision(){
 			if (sqrt(pow(player->getPosX() - enemyBullets[i]->getPosX(), 2) + pow(player->getPosY() - enemyBullets[i]->getPosY(), 2)) - player->getRadius() - enemyBullets[i]->getRadius() < 0) {
 				player->hit();
 				if (enemyBullets[i]->isActive()) {
-					delete enemyBullets[j];
-					enemyBullets.erase(enemyBullets.begin() + j);
+					delete enemyBullets[i];
+					enemyBullets.erase(enemyBullets.begin() + i);
 				}
 			}
 			i++;
@@ -308,6 +385,11 @@ void Game::CheckCollision(){
 				if (bullets[i]->isActive() && enemies2[j]->isActive()) {
 					delete bullets[i];
 					bullets.erase(bullets.begin() + i);
+					if (enemies2[j]->getTransformState() && !enemies2[j]->getMultiplied()) {
+						enemies2.push_back(new enemy4(true,enemies2[j]->getPosX(), enemies2[j]->getPosY()));
+						enemies2.push_back(new enemy4(true, enemies2[j]->getPosX(), enemies2[j]->getPosY(),120));
+						enemies2.push_back(new enemy4(true, enemies2[j]->getPosX(), enemies2[j]->getPosY() ,-120));
+					}
 					delete enemies2[j];
 					enemies2.erase(enemies2.begin() + j);
 					break;//OWOWOOWOWOWO
@@ -322,36 +404,6 @@ void Game::CheckCollision(){
 	i = 0;
 }
 
-void Game::update()
-{
-	if (!stateGame)
-	{
-		StartMenu();
-	}
-	else
-	{
-		GameUpdate();
-	}
-}
-
-void Game::draw()
-{
-	br.texture = std::string(ASSET_PATH) + "background.png";
-	br.outline_opacity = 0.0f;
-
-	//draw background
-	graphics::drawRect(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2, CANVAS_WIDTH, CANVAS_HEIGHT, br);
-
-	if (!stateGame)
-	{
-		StartMenuDraw();
-	}
-	else
-	{
-		GameUpdateDraw();
-	}
-}
-
 void Game::enemyFire(int i) {
 	//std::cout << i << std::endl;
 	enemyBullets.push_back(new bullet());
@@ -361,13 +413,34 @@ void Game::enemyFire(int i) {
 	enemyBullets.back()->set_mode(false);
 }
 
+void Game::enemy2Fire(int i) {
+	//std::cout << i << std::endl;
+	enemyBullets.push_back(new bullet());
+	int tempX = enemies[i]->getPosX();
+	int tempY = enemies[i]->getPosY();
+	enemyBullets.back()->setPos_x(tempX);
+	enemyBullets.back()->setPos_y(tempY);
+	int tempRotation = enemies[i]->getRotation();
+	enemyBullets.back()->set_Ang(tempRotation);
+	enemyBullets.back()->set_mode(false);
+	enemyBullets.push_back(new bullet());
+	enemyBullets.back()->setPos_x(tempX);
+	enemyBullets.back()->setPos_y(tempY);
+	enemyBullets.back()->set_Ang(tempRotation - 20);
+	enemyBullets.back()->set_mode(false);
+	enemyBullets.push_back(new bullet());
+	enemyBullets.back()->setPos_x(tempX);
+	enemyBullets.back()->setPos_y(tempY);
+	enemyBullets.back()->set_Ang(tempRotation + 20);
+	enemyBullets.back()->set_mode(false);
+}
+
 void Game::kill()
 {
 	aliveState = false;
 	deathX = player->getPosX();
 	deathY = player->getPosY();
 }
-
 
 void Game::init() 
 { 

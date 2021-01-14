@@ -3,7 +3,11 @@
 #include "Player.h"
 #include "enemy.h"
 #include "enemy2.h"
+#include "enemy3.h"
+#include "enemy4.h"
 #include "bullet.h"
+
+
 
 
 class Game
@@ -17,12 +21,15 @@ class Game
     bool stateGame = false;
     bool shouldFire = true;
     int lastTime;
-    int lastTimeFired;
     int reloadTimer;
     int cooldown;
     int cooldown2;
+    int cooldown3;
+    int cooldown4;
     int enemyCounter;
     int enemyCounter2;
+    int enemyCounter3;
+    int enemyCounter4;
     int score;
     int starttimer;
     int CountBullets = 0;
@@ -35,6 +42,9 @@ class Game
     float deathY;
     float lastTimeEnemy;
     float lastTimeEnemy2;
+    float lastTimeEnemy3;
+    float lastTimeEnemy4;
+    float replayTime=0;
     std::vector<bullet*> bullets;
     std::vector<enemy*> enemies;
     std::vector<enemy2*> enemies2;
@@ -46,9 +56,11 @@ public:
     void kill();
     void update();
     void draw();
-    void enemyFire(int i);
     void init();
+    void spawnEnemies();
     void CheckCollision();
+    void enemyFire(int i);
+    void enemy2Fire(int i);
     void StartMenu();
     void GameUpdate();
     void StartMenuDraw();

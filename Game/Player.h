@@ -9,8 +9,8 @@ class Player
 	float speed = 8.0f;
 	float pos_x=CANVAS_WIDTH/2, pos_y=CANVAS_HEIGHT/2;
 	float size = 80;
-	float heartSize = 30;
-	float radius = size / 3 + 9;
+	float heartSize = CANVAS_WIDTH/53.3;
+	float radius = size / 3;
 	float anglee;
 	graphics::MouseState mouse;
 
@@ -21,7 +21,7 @@ public:
 	void init();
 	void hit()
 	{ 
-		lives -= 1;
+		//lives -= 1;
 		if (lives == 0)
 		{
 		graphics::playSound(std::string(ASSET_PATH) + "rip.mp3", 0.8f);
