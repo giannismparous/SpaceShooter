@@ -12,8 +12,7 @@ class bullet : public GameObject
 	float anglee;
 	float size=30;
 	float radius = size - 25;
-	float length;
-	bool mode;
+	int mode=0;
 public:
 	void update() override;
 	void draw() override;
@@ -33,5 +32,6 @@ public:
 		if (pos_x<0 || pos_x>CANVAS_WIDTH || pos_y <0 || pos_y>CANVAS_HEIGHT)return false;
 		return true;
 	}
-	void set_mode(bool m) { mode = m; }
+	void set_mode(int mode) { this->mode = mode; }
+	int get_mode() { return mode; }
 };

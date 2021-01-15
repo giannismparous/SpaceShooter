@@ -156,7 +156,9 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="meteorite.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="powerup.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h" />
@@ -167,7 +169,9 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="bullet.h" />
+    <ClInclude Include="meteorite.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="powerup.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
