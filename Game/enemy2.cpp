@@ -1,7 +1,5 @@
 #include "enemy2.h"
-#include "graphics.h"
 #include "config.h"
-#include <cmath>
 
 void enemy2::update()
 {
@@ -29,7 +27,7 @@ void enemy2::draw()
 	br.outline_opacity = 0.0f;
 
 	graphics::setOrientation(rotation);
-	graphics::drawRect(pos_x, pos_y, size, size, br);
+	graphics::drawRect(pos_x, pos_y, size+size/2, size+size/2, br);
 	br.texture = "";
 	br.fill_opacity = 0.0f;
 	graphics::drawDisk(pos_x, pos_y, radius, br);

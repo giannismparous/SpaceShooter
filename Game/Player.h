@@ -3,19 +3,19 @@
 #include "config.h"
 #include "graphics.h"
 
-class Player
+class Player:public GameObject
 {
 	int lives = 3;
 	int powerupType = -1;
-	int spaceshipType;
+	int spaceshipType=2;
 	float speed = 8.0f;
 	float pos_x,pos_y;
 	float size;
 	float radius;
 	float heartSize = CANVAS_WIDTH / 53.3;
-	float anglee;
+	float angle;
 	bool automated;
-	bool selected;
+	bool selected=false;
 	graphics::MouseState mouse;
 
 public:
@@ -29,14 +29,14 @@ public:
 	void init();
 	void hit()
 	{
-		lives -= 1;
+		if (lives>0)lives -= 1;
 		if (lives == 0)
 		{
-			//graphics::playSound(std::string(ASSET_PATH) + "rip.mp3", 0.8f);
+			graphics::playSound(std::string(ASSET_PATH) + "rip.mp3", 0.8f);
 		}
 		else
 		{
-			//graphics::playSound(std::string(ASSET_PATH) + "death.mp3", 0.20f);
+			graphics::playSound(std::string(ASSET_PATH) + "death.mp3", 0.20f);
 		}
 	}
 	int getLives() { return lives; }
@@ -44,7 +44,7 @@ public:
 	float getPosX() { return pos_x; }
 	float getPosY() { return pos_y; }
 	float getSize() { return size; }
-	float getAng() { return anglee; }
+	float getAng() { return angle; }
 	int getPowerupType() { return powerupType; }
 	void setPowerupType(int powerupType) {
 		if (powerupType == 3) lives++;

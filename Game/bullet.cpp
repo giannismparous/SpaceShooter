@@ -1,12 +1,10 @@
 #include "bullet.h"
-#include <iostream>
 
 void bullet::update()
 {
 		pos_x -= sin(anglee*PI/180)*speed * graphics::getDeltaTime() / 10.0f;
 		pos_y -= cos(anglee * PI / 180) * speed * graphics::getDeltaTime() / 10.0f;
 
-	//std::cout << "Bullet moved to " << pos_x << "," << pos_y << std::endl;
 }
 
 void bullet::draw()

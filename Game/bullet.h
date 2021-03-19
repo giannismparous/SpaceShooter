@@ -2,7 +2,6 @@
 #include "GameObject.h"
 #include "graphics.h"
 #include "config.h"
-#include <iostream>
 
 
 class bullet : public GameObject
@@ -23,7 +22,6 @@ public:
 	void setPos_y(float py) { pos_y = py; }
 	void set_Ang(float an) { 
 		anglee = an;
-		//std::cout<<"Angle made:" << anglee << std::endl;
 	}
 	float getRadius() { return radius; }
 	float getPosX() { return pos_x; }

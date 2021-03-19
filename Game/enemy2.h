@@ -1,11 +1,10 @@
 #pragma once
-#include "GameObject.h"
+#include "enemies.h"
 #include "graphics.h"
 #include <random>
 #include "config.h"
-#include <iostream>
 
-class enemy2 : public GameObject
+class enemy2 : public enemies
 {
     float pos_x, pos_y;
     float rotation;
@@ -34,7 +33,10 @@ public:
             if (rand() % 2 == 0)pos_y = CANVAS_HEIGHT - rand() % CANVAS_HEIGHT / 8;
             else pos_y = rand() % CANVAS_HEIGHT / 8;
         }
-        //std::cout << abs(getPlayerX() - pos_x) << " " << abs(getPlayerY() - pos_y) << std::endl;
+    }
+    void setXY(float x, float y) {
+        pos_x = x;
+        pos_y = y;
     }
     void setPosX(float pos_x) { this->pos_x = pos_x; }
     void setPosY(float pos_y) { this->pos_y = pos_y; }

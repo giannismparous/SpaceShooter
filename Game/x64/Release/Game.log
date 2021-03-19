@@ -1,94 +1,19 @@
-﻿  Game.cpp
-C:\Users\Giannis\Desktop\Game\Game\Player.h(15,18): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Giannis\Desktop\Game\Game\Player.h(56,18): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Player.h(60,18): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Player.h(64,18): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy.h(19,25): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy.h(26,58): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy.h(28,41): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy.h(29,75): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy.h(30,77): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy.h(32,54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy.h(33,48): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy.h(35,77): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy.h(36,79): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy.h(38,55): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy.h(39,49): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy2.h(24,41): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy2.h(25,79): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy2.h(26,80): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy2.h(28,54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy2.h(29,48): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy2.h(31,81): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy2.h(32,82): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy2.h(34,55): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy2.h(35,49): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy4.h(12,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy4.h(13,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\enemy4.h(14,20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\powerup.h(21,18): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\powerup.h(25,18): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\powerup.h(29,18): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\powerup.h(33,18): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\powerup.h(39,25): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\powerup.h(40,25): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\meteorite.h(30,77): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\meteorite.h(31,51): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\meteorite.h(32,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\meteorite.h(33,55): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\meteorite.h(34,36): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\meteorite.h(35,37): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\meteorite.h(36,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\meteorite.h(37,37): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\meteorite.h(38,36): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\meteorite.h(41,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\meteorite.h(42,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\meteorite.h(43,75): warning C4244: '=': conversion from 'long double' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\meteorite.h(45,27): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\meteorite.h(47,19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(40,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(63,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(86,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(87,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(88,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(89,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(90,21): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(91,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(94,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(95,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(96,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(99,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(100,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(101,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(121,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(127,37): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(159,63): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(169,35): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(172,56): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(176,56): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(221,39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(223,118): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(292,144): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(294,255): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(294,189): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(357,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(381,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(561,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(562,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(563,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(564,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(565,19): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(566,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(569,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(570,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(571,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(574,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(575,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(576,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Giannis\Desktop\Game\Game\Game.cpp(601,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+﻿  enemy2.cpp
+C:\Users\Giannis\Desktop\Game\Game\enemy2.h(23,41): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\Giannis\Desktop\Game\Game\enemy2.h(24,79): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Giannis\Desktop\Game\Game\enemy2.h(25,80): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Giannis\Desktop\Game\Game\enemy2.h(27,54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Giannis\Desktop\Game\Game\enemy2.h(28,48): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Giannis\Desktop\Game\Game\enemy2.h(30,81): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Giannis\Desktop\Game\Game\enemy2.h(31,82): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Giannis\Desktop\Game\Game\enemy2.h(33,55): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Giannis\Desktop\Game\Game\enemy2.h(34,49): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Giannis\Desktop\Game\Game\enemy2.cpp(6,81): warning C4244: '=': conversion from 'long double' to 'float', possible loss of data
+C:\Users\Giannis\Desktop\Game\Game\enemy2.cpp(9,79): warning C4244: '-=': conversion from 'long double' to 'float', possible loss of data
+C:\Users\Giannis\Desktop\Game\Game\enemy2.cpp(13,79): warning C4244: '-=': conversion from 'long double' to 'float', possible loss of data
   Generating code
-  2 of 475 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+  1 of 485 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    10 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Game.vcxproj -> C:\Users\Giannis\Desktop\Game\bin\Game.exe

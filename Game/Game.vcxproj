@@ -148,20 +148,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="boss.cpp" />
     <ClCompile Include="bullet.cpp" />
+    <ClCompile Include="enemies.cpp" />
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="enemy2.cpp" />
     <ClCompile Include="enemy3.cpp" />
     <ClCompile Include="enemy4.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="meteorite.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="powerup.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="boss.h" />
     <ClInclude Include="config.h" />
+    <ClInclude Include="enemies.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="enemy2.h" />
     <ClInclude Include="enemy3.h" />
@@ -169,7 +171,6 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="bullet.h" />
-    <ClInclude Include="meteorite.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="powerup.h" />
   </ItemGroup>

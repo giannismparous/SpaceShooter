@@ -1,7 +1,6 @@
 #include "enemy.h"
 #include "graphics.h"
 #include "config.h"
-#include <cmath>
 
 void enemy::update()
 {	
@@ -9,7 +8,6 @@ void enemy::update()
 			srand(graphics::getGlobalTime());
 			moveX = (rand() % CANVAS_WIDTH/10)*10;
 			moveY = (rand() % CANVAS_HEIGHT/10)*10;
-			//std::cout << moveX << " " << moveY << std::endl;
 	}
 	if (abs(pos_x - moveX) > 2) {
 		if (moveX < pos_x)pos_x -= round(speed * graphics::getDeltaTime() / 10.0f);
@@ -36,7 +34,7 @@ void enemy::draw()
 	br.outline_opacity = 0.0f;
 
 	graphics::setOrientation(rotation);
-	graphics::drawRect(pos_x, pos_y, size+size/3, size, br);
+	graphics::drawRect(pos_x, pos_y, size, size, br);
 	br.texture = "";
 	br.fill_opacity = 0.0f;
 	graphics::drawDisk(pos_x, pos_y, radius, br);
